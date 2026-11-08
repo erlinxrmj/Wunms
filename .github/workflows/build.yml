@@ -1,0 +1,31 @@
+name: Wumms bauen
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '8.0.x'
+
+      - name: Icon vorbereiten
+        shell: pwsh
+        run: |
+          if (-not (Test-Path Wumms/wumms.ico)) {
+            [IO.File]::WriteAllBytes("Wumms/wumms.ico", [Convert]::FromBase64String((Get-Content Wumms/wumms.ico.b64 -Raw).Trim()))
+          }
+
+      - name: Wumms.exe erstellen
+        run: dotnet publish Wumms/Wumms.csproj -c Release -r win-x64 --self-contained true -p:PublishSingleFile=true -p:IncludeNativeLibrariesForSelfExtract=true -p:EnableCompressionInSingleFile=true -o publish
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: Wumms
+          path: publish/Wumms.exe
