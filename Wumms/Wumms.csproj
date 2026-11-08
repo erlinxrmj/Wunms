@@ -1,0 +1,24 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <UseWindowsForms>true</UseWindowsForms>
+    <ImplicitUsings>disable</ImplicitUsings>
+    <Nullable>disable</Nullable>
+    <LangVersion>latest</LangVersion>
+    <RootNamespace>Wumms</RootNamespace>
+    <AssemblyName>Wumms</AssemblyName>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+    <ApplicationIcon>wumms.ico</ApplicationIcon>
+
+    <!-- Wird in Windows unter Eigenschaften > Details angezeigt -->
+    <Product>Wumms</Product>
+    <AssemblyTitle>Wumms - Bass &amp; Equalizer</AssemblyTitle>
+    <Company>Erlin Ramaj</Company>
+    <Authors>Erlin Ramaj</Authors>
+    <Copyright>© 2026 Erlin Ramaj</Copyright>
+    <Version>1.0.0</Version>
+  </PropertyGroup>
+
+</Project>
